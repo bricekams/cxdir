@@ -1,21 +1,29 @@
 function cx__delete () {
-    if [[ -n $alias && $(is_good_format $alias) = "good" ]]; then
-        cx__delete_process $alias
-    elif [[ -n $alias ]] && [[ ! $(is_good_format $alias) = "good" ]]; then 
-        case $alias in
-            "--help") cx__help_show delete;;
-            "--all") cx__delete_all_process;;
-            * ) (
-                source "$errors_file_path"
-                cx__error_invalid_option $alias
-            );;
-        esac
-    else
+    if [[ $args_number -gt 2 ]]; then # unecessary arg at the end...
         (
             source "$errors_file_path"
-            cx__error_alias_not_provided
+            cx__error_unknow-arg ${args_array[2]}
+            see_help_i_delete
         )
-    fi                        
+    else
+        if [[ -n $alias && $(is_good_format $alias) = "good" ]]; then # alias exist and fromat good
+            cx__delete_process $alias
+        elif [[ -n $alias ]] && [[ ! $(is_good_format $alias) = "good" ]]; then # alias exist and format bad
+            case $alias in
+                "--help") cx__help_show delete;;
+                "--all") cx__delete_all_process;;
+                * ) ( # unknow option
+                    source "$errors_file_path"
+                    cx__error_invalid_option $alias
+                );;
+            esac
+        else # alias does'nt exist
+            (
+                source "$errors_file_path"
+                cx__error_alias_not_provided
+            )  
+        fi
+    fi                      
 }
 
 function cx__delete_process () {
@@ -25,17 +33,18 @@ function cx__delete_process () {
     for i in ${!shortcuts[@]}; do
         tmp_2=$(echo "${shortcuts[$i]} \!\@\#$%^&*" | sed "s/[^[:alnum:]-]//g") # assign a transformed value of i to tmp_2
         length_2=$(echo -n $tmp_2 | wc -m) # the length of  tmp_2
-        if [[ "$tmp_1" == *$tmp_2* && $length_1 -eq $length_2  ]]; then # exist in the file
+        if [[ "$tmp_1" == *$tmp_2* && $length_1 -eq $length_2  ]]; then # alias exist in the file
             line=$(($i+1)) # line index
             sed -i "${line}d" $csv_file_path # delete that line
-            echo -e "\xE2\x9C\x94 done!"
-            exit 0;
+            echo -e "\xE2\x9C\x94 done!" # echo sucess
+            exit 0; 
             break
         fi
     done
-    (
+    ( # alias not found
         source "$errors_file_path"
         cx__error_alias_not_found
+        exit 12
     )
 }
 
