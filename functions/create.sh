@@ -77,7 +77,7 @@ function is_good_format () {
 function exitant () {
     tmp_1=$(echo "$1 \!\@\#$%^&*" | sed "s/[^[:alnum:]-]//g") # transform: remove all non alnum char in the given string
     length_1=$(echo -n $tmp_1 | wc -m) # the length of the given string after been transformed
-    paths=$(awk -F "\"*,\"*" '{print $3}' /home/bricekk/projects/sh/path_manager/saved.csv) # assign all the value of the third column of saved.csv to paths
+    paths=$(awk -F "\"*,\"*" '{print $3}' $csv_file_path) # assign all the value of the third column of saved.csv to paths
     for i in $paths; do
         tmp_2=$(echo "$i \!\@\#$%^&*" | sed "s/[^[:alnum:]-]//g") # assign a transformed value of i to tmp_2
         length_2=$(echo -n $tmp_2 | wc -m) # the length of  tmp_2

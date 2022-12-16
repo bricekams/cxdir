@@ -43,3 +43,12 @@ function cx__path_already_exist () {
     echo -e $blue"Tips:"$defaultColor "Use$cyan cx list"$defaultColor to see all the saved paths
 }
 
+function cx__error_alias_not_provided () {
+    echo -e $red"cx:"$defaultColor "You must give the shortcut name in order to delete it."
+    echo -e $blue"Tips:"$defaultColor "See$cyan cx delete --help"$defaultColor "to see more about the delete command"
+}
+
+function cx__error_alias_not_found () {
+    echo "cx: the given shortcut doesn't exist"
+}
+

@@ -32,7 +32,7 @@ errors_file_path="$HOME/projects/sh/path_manager/errors.sh"
 # functions path
 list_file_path="$HOME/projects/sh/path_manager/functions/list.sh"
 create_file_path="$HOME/projects/sh/path_manager/functions/create.sh"
-
+delete_file_path="$HOME/projects/sh/path_manager/functions/delete.sh"
 
 
 ########## CORE FUNCTIONS ##########
@@ -79,7 +79,10 @@ function cx__create_main () {
 }
 
 function cx__delete_main () { 
-    echo ""
+    (
+        source $delete_file_path
+        cx__delete $1
+    )
 }
 
 function cx__rename_main () { 
@@ -98,7 +101,7 @@ function cx__list_main () {
 }
 
 function cx__help_show () { 
-    echo "" 
+    echo $1 
 }
 
 function cx__change_dir () {
