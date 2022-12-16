@@ -18,6 +18,7 @@ args=$*
 command=$1
 alias=$2
 option=$3
+new_alias=$3
 path=$4
 # var: array of args 
 declare -a args_array=("$@")
@@ -25,14 +26,16 @@ declare -a args_array=("$@")
 ## path ##
 
 # path of saved shortcuts files
+cx_path="$HOME/projects/sh/path_manager"
 # to change
-csv_file_path="$HOME/projects/sh/path_manager/saved.csv"
+csv_file_path="$cx_path/saved.csv"
 # path of errors file
-errors_file_path="$HOME/projects/sh/path_manager/errors.sh" 
+errors_file_path="$cx_path/errors.sh" 
 # functions path
-list_file_path="$HOME/projects/sh/path_manager/functions/list.sh"
-create_file_path="$HOME/projects/sh/path_manager/functions/create.sh"
-delete_file_path="$HOME/projects/sh/path_manager/functions/delete.sh"
+list_file_path="$cx_path/functions/list.sh"
+create_file_path="$cx_path/functions/create.sh"
+delete_file_path="$cx_path/functions/delete.sh"
+rename_file_path="$cx_path/functions/rename.sh"
 
 
 ########## CORE FUNCTIONS ##########
@@ -56,16 +59,13 @@ function cx__main () {
         # user want help about the `cx` command    
             "--help") cx__help_show;;
         # user want to use [cx] to change dir        
-            * ) (
-                source "$errors_file_path"
-                cx__error_unknow-command
-            );;
+            * ) cx__change_dir;;
         esac
     # if no params            
     else
         (
             source "$errors_file_path"
-            cx__error_no_command
+            cx__error_no_command $command
         );
     fi            
 }
@@ -81,12 +81,15 @@ function cx__create_main () {
 function cx__delete_main () { 
     (
         source $delete_file_path
-        cx__delete $1
+        cx__delete
     )
 }
 
 function cx__rename_main () { 
-    echo "" 
+    (
+        source $rename_file_path
+        cx__rename
+    )
 }
 
 function cx__update_main () {
@@ -105,7 +108,7 @@ function cx__help_show () {
 }
 
 function cx__change_dir () {
-     echo ""
+     echo "change dir"
 }
 
 
