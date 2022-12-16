@@ -15,18 +15,26 @@ function see_help_i_create () {
     echo -e $blue"Tips:"$defaultColor "Use$cyan cx create --help$defaultColor to get more info about the \`create\` command"
 }
 
+function see_help_i_delete () {
+    echo -e $blue"Tips:"$defaultColor "See$cyan cx delete --help"$defaultColor "to see more about the delete command"
+}
+
 function see_help_i () {
     echo -e $blue"Tips:"$defaultColor "See$cyan cx --help$defaultColor for more info" 
 }
 
 function cx__error_unknow-command () {
-    echo -e $red"cx:"$defaultColor "Unknow command $command"
+    echo -e $red"cx:"$defaultColor "Unknow command $1"
     see_help_i
 }
 
 function cx__error_no_command(){
     echo "cx: A command must be given"
     see_help_i
+}
+
+function see_help_i_rename () {
+    echo -e $blue"Tips:"$defaultColor "See$cyan cx rename --help"$defaultColor "to see more about the rename command"
 }
 
 function cx__error_dir_inexistant () {
@@ -45,10 +53,20 @@ function cx__path_already_exist () {
 
 function cx__error_alias_not_provided () {
     echo -e $red"cx:"$defaultColor "You must give the shortcut name in order to delete it."
-    echo -e $blue"Tips:"$defaultColor "See$cyan cx delete --help"$defaultColor "to see more about the delete command"
+    see_help_i_delete
 }
 
 function cx__error_alias_not_found () {
     echo "cx: the given shortcut doesn't exist"
+}
+
+function cx__error_new_alias_not_provided () {
+    echo -e $red"cx:"$defaultColor "You must give the new shortcut name."
+    see_help_i_rename
+}
+
+function cx__error_not_alias_rename () {
+    echo -e $red"cx:"$defaultColor "2 arguments expected, 0 found"
+    see_help_i_rename
 }
 
