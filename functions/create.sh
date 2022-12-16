@@ -31,8 +31,24 @@ function cx__create () {
 }
 
 # insert row in saved.csv
-function cx__create__process() { 
-    if [[ $(is_good_format $1) = "good" ]] && [[ -d $2 && -n $2 ]] && [[ ! $(exitant $2) = "yes" ]]; then # good format and $path exist
+function cx__create__process() {
+    if [[ ! $(is_good_format $1) = "good" ]]; then
+        if [[ -z $alias ]]; then # alias not given
+            (
+                source "$errors_file_path"
+                msg="You must give an alias using the [-p] option since the current directory's name has an invalid format (non alphanumeric character(s))"
+                cx__error_bad_format "$msg"
+            )
+            exit 1  
+        fi
+        (
+            source "$errors_file_path"
+            msg="The shortcut name must only content alphanumeric characters"
+            cx__error_bad_format "$msg"
+        )
+        exit 1
+    fi    
+    if [[ -d $2 && -n $2 ]] && [[ ! $(exitant $2) = "yes" ]]; then # $path exist
 
         echo "$(date "+%F"),$1,$2" >> $csv_file_path
         echo -e "\xE2\x9C\x94 done!"
@@ -48,20 +64,8 @@ function cx__create__process() {
             source "$errors_file_path"
             cx__path_already_exist
         )     
-    else # bad format
-        if [[ -n $alias ]]; then # alias given
-            (
-                source "$errors_file_path"
-                msg="The shortcut name must only content alphanumeric characters"
-                cx__error_bad_format "$msg"
-            )
-        else # alias not given
-            (
-                source "$errors_file_path"
-                msg="You must give an alias using the [-p] option since the current directory's name has an invalid format (non alphanumeric character(s))"
-                cx__error_bad_format "$msg"
-            )    
-        fi       
+    else
+        echo ""       
     fi         
 }
 
@@ -87,4 +91,3 @@ function exitant () {
         fi    
     done             
 }
-
