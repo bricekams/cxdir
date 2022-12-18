@@ -26,16 +26,16 @@ declare -a args_array=("$@")
 ## path ##
 
 # path of saved shortcuts files
-cx_path="$HOME/projects/sh/path_manager"
+cx_path="$HOME/projects/sh/cxdir"
 # to change
 csv_file_path="$cx_path/saved.csv"
 # path of errors file
 errors_file_path="$cx_path/errors.sh" 
-# functions path
-list_file_path="$cx_path/functions/list.sh"
-create_file_path="$cx_path/functions/create.sh"
-delete_file_path="$cx_path/functions/delete.sh"
-rename_file_path="$cx_path/functions/rename.sh"
+# cmd path
+list_file_path="$cx_path/cmd/list.sh"
+create_file_path="$cx_path/cmd/create.sh"
+delete_file_path="$cx_path/cmd/delete.sh"
+rename_file_path="$cx_path/cmd/rename.sh"
 
 
 ########## CORE FUNCTIONS ##########
