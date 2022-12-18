@@ -2,6 +2,11 @@ function cx__error_unknow-arg () {
     echo -e $red"cx:"$defaultColor "\"$1\"" "is invalid"
 }
 
+function cx__error_unknown_flag () {
+     echo -e $red"cx:"$defaultColor "\"$1\"" "is an invalid flag"
+     see_help_i_create
+}
+
 function cx__error_invalid_option () {
     echo -e $red"cx:"$defaultColor "\"$1\"" "is an invalid option"
 }
@@ -46,8 +51,13 @@ function cx__error_bad_format () {
     see_help_i_create
 }
 
-function cx__path_already_exist () {
+function cx__error_path_already_exist () {
     echo -e $red"cx:"$defaultColor "A shortcut to this path already exist!"
+    echo -e $blue"Tips:"$defaultColor "Use$cyan cx list"$defaultColor to see all the saved paths
+}
+
+function cx__error_shortcut_already_exist () {
+    echo -e $red"cx:"$defaultColor "A shortcut with this name already exist!"
     echo -e $blue"Tips:"$defaultColor "Use$cyan cx list"$defaultColor to see all the saved paths
 }
 
