@@ -67,7 +67,7 @@ function cx__error_alias_not_provided () {
 }
 
 function cx__error_alias_not_found () {
-    echo "cx: the given shortcut doesn't exist"
+    echo -e $red"cx:"$defaultColor "the given shortcut doesn't exist"
 }
 
 function cx__error_new_alias_not_provided () {

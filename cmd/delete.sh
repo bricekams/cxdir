@@ -10,7 +10,8 @@ function cx__delete () {
             cx__delete_process $alias
         elif [[ -n $alias ]] && [[ ! $(is_good_format $alias) = "good" ]]; then # alias exist and format bad
             case $alias in
-                "--help") cx__help_show delete;;
+                "--help") cx__help_show delete
+                exit 0;;
                 "--all") cx__delete_all_process;;
                 * ) ( # unknow option
                     source "$errors_file_path"

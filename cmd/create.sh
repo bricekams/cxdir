@@ -25,7 +25,8 @@ function cx__create () {
     if [[ ! $(is_good_format $alias) = "good" ]]; then
         case $alias in
         # user want help about the `cx create` command 
-            "--help") cx__help_show create;;
+            "--help") cx__help_show create
+            exit 0;;
         # only an alias has been given
             * ) (
                 source "$errors_file_path"
@@ -157,7 +158,7 @@ function existant_path () {
 function existant_name () {
     tmp_1=$(echo "$1 \!\@\#$%^&*" | sed "s/[^[:alnum:]-]//g") # transform: remove all non alnum char in the given string
     length_1=$(echo -n $tmp_1 | wc -m) # the length of the given string after been transformed
-    shortcuts=$(awk -F "\"*,\"*" '{print $2}' $csv_file_path) # assign all the value of the third column of saved.csv to paths
+    shortcuts=$(awk -F "\"*,\"*" '{print $2}' $csv_file_path) # assign all the value of the second column of saved.csv to shortcuts
     for i in $shortcuts; do
         tmp_2=$(echo "$i \!\@\#$%^&*" | sed "s/[^[:alnum:]-]//g") # assign a transformed value of i to tmp_2
         length_2=$(echo -n $tmp_2 | wc -m) # the length of  tmp_2

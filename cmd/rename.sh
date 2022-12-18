@@ -15,7 +15,8 @@ function cx__rename () {
     fi
     if [[ ! $(is_good_format $alias) = "good" ]];then
         case $alias in 
-            "--help") cx__help_show rename;;
+            "--help") cx__help_show rename
+            exit 0;;
             * ) (
                 source "$errors_file_path"
                 cx__error_invalid_option $alias
@@ -48,7 +49,7 @@ function cx__rename () {
     if [[ $(existant $new_alias) = "yes" ]]; then
         (
             source "$errors_file_path"
-            cx__path_already_exist
+            cx__error_shortcut_already_exist
         )
         exit 1;
     fi

@@ -36,6 +36,7 @@ list_file_path="$cx_path/cmd/list.sh"
 create_file_path="$cx_path/cmd/create.sh"
 delete_file_path="$cx_path/cmd/delete.sh"
 rename_file_path="$cx_path/cmd/rename.sh"
+update_file_path="$cx_path/cmd/update.sh"
 
 
 ########## CORE FUNCTIONS ##########
@@ -93,7 +94,10 @@ function cx__rename_main () {
 }
 
 function cx__update_main () {
-    echo "" 
+    (
+        source $update_file_path
+        cx__update
+    )
 }
 
 function cx__list_main () { 

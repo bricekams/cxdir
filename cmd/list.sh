@@ -1,5 +1,20 @@
 function cx__list()
 {
+
+    if [[ -n $alias ]]; then 
+        case $alias in
+            # user want help about the `cx update` command 
+                "--help") cx__help_show list
+                exit 0;;
+            # only an alias has been given
+                * ) (
+                    source "$errors_file_path"
+                    cx__error_unknown_flag $alias
+                )
+                exit 1;;  
+        esac
+    fi
+
     local -r delimiter="${1}"
     local -r tableData="$(removeEmptyLines "${2}")"
     local -r colorHeader="${3}"
