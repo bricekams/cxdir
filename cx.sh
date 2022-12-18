@@ -37,6 +37,8 @@ create_file_path="$cx_path/cmd/create.sh"
 delete_file_path="$cx_path/cmd/delete.sh"
 rename_file_path="$cx_path/cmd/rename.sh"
 update_file_path="$cx_path/cmd/update.sh"
+change_file_path="$cx_path/cmd/change.sh"
+
 
 
 ########## CORE FUNCTIONS ##########
@@ -112,7 +114,10 @@ function cx__help_show () {
 }
 
 function cx__change_dir () {
-     echo "change dir"
+    source $change_file_path
+    dir2="$(cx__change)"
+    echo $dir2
+    cd "$dir2"
 }
 
 
