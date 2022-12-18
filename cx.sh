@@ -116,7 +116,6 @@ function cx__help_show () {
 function cx__change_dir () {
     source $change_file_path
     dir2="$(cx__change)"
-    echo $dir2
     cd "$dir2"
 }
 
