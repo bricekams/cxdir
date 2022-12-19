@@ -7,3 +7,4 @@ cp -r . ~/.cxdir
 rm -rf ~/.cxdir/.git ~/.cxdir/.gitignore ~/.cxdir/install.sh
 echo 'export PATH="$PATH":"$HOME/.cxdir"' >> ~/.bashrc
 echo "alias cx='. cx'" >> ~/.bashrc
+exit 0
