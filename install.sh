@@ -1,4 +1,5 @@
 #!/bin/bash
+rm -rf ~/.cxdir
 mkdir ~/.cxdir
 touch saved.csv
 echo "Date,Shortcut,Path" >> saved.csv
