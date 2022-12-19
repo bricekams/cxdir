@@ -143,7 +143,6 @@ function show_help_cx () {
     echo ""
     echo "Use 'cx <command> --help' to more about each command"
     echo ""
-    exit 0
 }
 
 
