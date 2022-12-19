@@ -15,7 +15,8 @@ function cx__delete () {
                 "--all") cx__delete_all_process;;
                 * ) ( # unknow option
                     source "$errors_file_path"
-                    cx__error_invalid_option $alias
+                    cx__error_alias_not_found $alias
+                    see_help_i_delete
                 );;
             esac
         else # alias does'nt exist
