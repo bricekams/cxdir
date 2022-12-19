@@ -6,4 +6,5 @@ echo "Date,Shortcut,Path" >> saved.csv
 cp -r . ~/.cxdir
 rm -rf ~/.cxdir/.git ~/.cxdir/.gitignore
 echo 'export PATH="$PATH":"$HOME/.cxdir"' >> ~/.bashrc
+echo "alias cx='. cx'" >> ~/.bashrc
 exit 0
