@@ -30,7 +30,8 @@ function cx__create () {
         # only an alias has been given
             * ) (
                 source "$errors_file_path"
-                cx__error_unknown_flag $alias
+                msg="You must not use non-alphanumeric characters"
+                cx__error_bad_format "$msg"
             )
             exit 1;;  
         esac
