@@ -26,7 +26,7 @@ declare -a args_array=("$@")
 ## path ##
 
 # path of saved shortcuts files
-cx_path="$HOME/projects/sh/cxdir"
+cx_path="$HOME/.cxdir"
 # to change
 csv_file_path="$cx_path/saved.csv"
 # path of errors file
