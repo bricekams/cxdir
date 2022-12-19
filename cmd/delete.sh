@@ -10,7 +10,7 @@ function cx__delete () {
             cx__delete_process $alias
         elif [[ -n $alias ]] && [[ ! $(is_good_format $alias) = "good" ]]; then # alias exist and format bad
             case $alias in
-                "--help") cx__help_show delete
+                "--help") show_help_delete
                 exit 0;;
                 "--all") cx__delete_all_process;;
                 * ) ( # unknow option
@@ -64,4 +64,19 @@ function is_good_format () {
     else
         echo "good"
     fi        
+}
+
+function show_help_delete () {
+    echo ""
+    echo $cyan"NAME:"$defaultColor
+    echo -e "\t cx delete - delete a shortcut"
+    echo ""
+    echo $cyan"DESCRIPTION:"$defaultColor
+    echo -e "\t Use this command to delete a shortcut or more"
+    echo ""
+    echo $cyan"USAGE:"$defaultColor
+    echo -e "\t cx delete <shortcut_name>: will delete the shortcut with the given name"
+    echo ""
+    echo -e "\t cx delete --all: will delete all the saved shortcut, be carefull"
+    echo ""
 }

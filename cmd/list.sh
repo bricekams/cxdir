@@ -4,7 +4,7 @@ function cx__list()
     if [[ -n $alias ]]; then 
         case $alias in
             # user want help about the `cx update` command 
-                "--help") cx__help_show list
+                "--help") show_help_list
                 exit 0;;
             # only an alias has been given
                 * ) (
@@ -123,4 +123,17 @@ function trimString()
     local -r string="${1}"
 
     sed 's,^[[:blank:]]*,,' <<< "${string}" | sed 's,[[:blank:]]*$,,'
+}
+
+function show_help_list () {
+    echo ""
+    echo $cyan"NAME:"$defaultColor
+    echo -e "\t cx list - list all shortcuts"
+    echo ""
+    echo $cyan"DESCRIPTION:"$defaultColor
+    echo -e "\t Use this command to list all the saved shortcuts"
+    echo ""
+    echo $cyan"USAGE:"$defaultColor
+    echo -e "\t cx list"
+    echo ""
 }

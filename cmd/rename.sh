@@ -15,7 +15,7 @@ function cx__rename () {
     fi
     if [[ ! $(is_good_format $alias) = "good" ]];then
         case $alias in 
-            "--help") cx__help_show rename
+            "--help") show_help_rename
             exit 0;;
             * ) (
                 source "$errors_file_path"
@@ -100,4 +100,18 @@ function is_good_format () {
     else
         echo "good"
     fi        
+}
+
+
+function show_help_rename () {
+    echo ""
+    echo $cyan"NAME:"$defaultColor
+    echo -e "\t cx rename - rename a shortcut"
+    echo ""
+    echo $cyan"DESCRIPTION:"$defaultColor
+    echo -e "\t Use this command to rename a shortcut."
+    echo ""
+    echo $cyan"USAGE:"$defaultColor
+    echo -e "\t cx rename <old_name> <the_new>"
+    echo ""
 }

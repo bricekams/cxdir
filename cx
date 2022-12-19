@@ -60,7 +60,10 @@ function cx__main () {
         # user want to [list] all shortcuts    
             "list") cx__list_main;;
         # user want help about the `cx` command    
-            "--help") cx__help_show;;
+            "--help") show_help_cx;;
+        # user want to know the software version    
+            "--version" | "-v") echo "cxdir version 0.1.0"
+                exit 0;;
         # user want to use [cx] to change dir        
             * ) cx__change_dir;;
         esac
@@ -109,10 +112,6 @@ function cx__list_main () {
     ) 
 }
 
-function cx__help_show () { 
-    echo $1 
-}
-
 function cx__change_dir () {
     source $change_file_path
     cx__change
@@ -127,6 +126,24 @@ function cx__hasParams() {
     else # args found
         echo "false"
     fi 
+}
+
+function show_help_cx () {
+    echo ""
+    echo "cxdir: cx [<shortcut_name>] - to change directory"
+    echo "cxdir: cx [--help] [--version]"
+    echo ""
+    echo "These are common cxdir command used in various situation:"
+    echo ""
+    echo -e "create \t \t \t create a new shortcut"
+    echo -e "list \t \t \t list all saved shortcuts with their poiting path"
+    echo -e "rename \t \t \t rename a shortcut"
+    echo -e "update \t \t \t update the path of a shortcut"
+    echo -e "delete \t \t \t delete a saved shortcut"
+    echo ""
+    echo "Use 'cx <command> --help' to more about each command"
+    echo ""
+    exit 0
 }
 
 

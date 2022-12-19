@@ -1,0 +1,2 @@
+# CXDIR 
+### Simple shortcut manager

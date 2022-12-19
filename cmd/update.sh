@@ -2,7 +2,7 @@ function cx__update ()  {
     if [[ -n $alias ]]; then 
         case $alias in
             # user want help about the `cx update` command 
-                "--help") cx__help_show update
+                "--help") show_help_update
                 exit 0;;
             # only an alias has been given
                 * ) (
@@ -131,4 +131,17 @@ function cx__delete_process () {
         cx__error_alias_not_found
         exit 12
     )
+}
+
+function show_help_update () {
+    echo ""
+    echo $cyan"NAME:"$defaultColor
+    echo -e "\t cx update - update the path of a shortcut"
+    echo ""
+    echo $cyan"DESCRIPTION:"$defaultColor
+    echo -e "\t update the path of a shortcut"
+    echo ""
+    echo $cyan"USAGE:"$defaultColor
+    echo -e "\t cx update"
+    echo ""
 }

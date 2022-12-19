@@ -25,7 +25,7 @@ function cx__create () {
     if [[ ! $(is_good_format $alias) = "good" ]]; then
         case $alias in
         # user want help about the `cx create` command 
-            "--help") cx__help_show create
+            "--help") show_help_create
             exit 0;;
         # only an alias has been given
             * ) (
@@ -168,4 +168,21 @@ function existant_name () {
             break
         fi    
     done             
+}
+
+function show_help_create () {
+    echo ""
+    echo $cyan"NAME:"$defaultColor
+    echo -e "\t cx create - create a new shortcut"
+    echo ""
+    echo $cyan"DESCRIPTION:"$defaultColor
+    echo -e "\t Use this command to create a new shortcut so that you can use 'cx <shortcut name>' to quickly change your current directory"
+    echo ""
+    echo $cyan"USAGE:"$defaultColor
+    echo -e "\t cx create: will create a shortcut whit the current directory name (if valid = alphanumeric charcaters) and the current directory path."
+    echo ""
+    echo -e "\t cx create [<alias>]: will create a shortcut with the given alias as name and the current path."
+    echo ""
+    echo -e "\t cx create <alias> -p 'a_path': will create a shortcut with the given alias as name and the given path."
+    echo ""
 }
