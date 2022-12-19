@@ -6,7 +6,8 @@ I made this tool to save time when working. now instead of using `cd a/very/long
 
 It's a [zoxide](https://github.com/ajeetdsouza/zoxide) like tool made in bash-scripting
 
-If there is something that i can guarantee, it's that: It's works on my computer (Ubuntu) 
+If there is something that i can guarantee, it's that: It works on my computer (Ubuntu) 
+Please try on you environement and let's improve it
 
 ### Installation 
 
