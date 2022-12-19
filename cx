@@ -115,8 +115,7 @@ function cx__help_show () {
 
 function cx__change_dir () {
     source $change_file_path
-    nxt_path="$(cx__change)"
-    cd "$nxt_path"
+    cx__change
 }
 
 

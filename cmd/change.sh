@@ -30,7 +30,7 @@
     fi
 
     # alias found 
-    echo "$(get_path $command)" # do not forget, in this case, command is the alias 
+    cd "$(get_path $command)" # do not forget, in this case, command is the alias 
 }
 
 
