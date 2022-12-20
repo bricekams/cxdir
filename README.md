@@ -39,7 +39,7 @@ to rename a shortcut
 `cx rename <old_name> <new_name>`
 
 ### . update a shortcut
-To you want to update the path of a shortcut
+To update the path of a shortcut
 
 `cx update` 
 
