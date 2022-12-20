@@ -2,7 +2,7 @@
 ### Simple shortcut manager
 
 I made this tool to save time when working. now instead of using `cd a/very/long/path`, i can use <br/>
-`cx shortcut` and quickly change my current directory to another one based on the path pointing to this shortcut.
+`cx shortcut` and quickly change my current directory to another one based on the path pointed by this shortcut.
 
 It's a [zoxide](https://github.com/ajeetdsouza/zoxide) like tool made in bash-scripting
 
