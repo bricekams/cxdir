@@ -126,6 +126,8 @@ function uninstall () {
     return
     fi 
     rm -rf "$cx_path"
+    sed -i '/cx=/d' "$HOME/.bashrc"
+    sed -i '/cxdir/d' "$HOME/.bashrc"
     echo "uninstalled"
 }
 
