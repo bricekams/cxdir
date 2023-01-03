@@ -1,7 +1,7 @@
 #!/bin/bash
 rm -rf ~/.cxdir
 mkdir ~/.cxdir
-rm saved.csv
+rm saved.csv 2> /dev/null
 touch saved.csv
 echo "Date,Shortcut,Path" >> saved.csv
 cp -r . ~/.cxdir
