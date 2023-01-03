@@ -1,11 +1,4 @@
-function cx__create () {
-    if [ $alias = "list" ] || [ $alias = "create" ] || [ $alias = "uninstall" ] || [ $alias = "delete" ] || [ $alias = "update" ] || [ $alias = "rename" ]; then
-        (
-            source "$errors_file_path"
-            cx__create_error_name
-        )
-        exit 1
-    fi    
+function cx__create () { 
     if [[ -z $alias ]]; then
         dirname=$(basename $(pwd))
         if [[ ! $(is_good_format $dirname) = "good" ]]; then
@@ -44,6 +37,14 @@ function cx__create () {
         esac
         exit 0
     fi
+
+    if [ $alias = "list" ] || [ $alias = "create" ] || [ $alias = "uninstall" ] || [ $alias = "delete" ] || [ $alias = "update" ] || [ $alias = "rename" ]; then
+        (
+            source "$errors_file_path"
+            cx__create_error_name
+        )
+        exit 1
+    fi   
 
     # if here $alias has good format 
 
