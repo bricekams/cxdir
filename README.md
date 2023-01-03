@@ -60,6 +60,11 @@ To list all the saved shortcuts
 
 `cx <command> --help`: specific command
 
+### . list
+Uninstall
+
+`cx uninstall`
+
 
 ### CONTRIBUTION
 
