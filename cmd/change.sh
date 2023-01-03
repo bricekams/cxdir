@@ -8,9 +8,9 @@
                 * ) (
                     source "$errors_file_path"
                     cx__error_unknown_flag $alias
-                )
-                exit 1;;  
+                )  
         esac
+        return
     fi
 
     if [[ ! $(is_good_format $command) = "good" ]]; then
@@ -18,19 +18,19 @@
             source "$errors_file_path"
             cx__error_alias_not_found
         )
-        exit 1
+        return
     fi
 
     if [[ ! $(existant_name $command) = "yes" ]]; then
-       (   
+        (   
             source "$errors_file_path"
             cx__error_alias_not_found
         )
-        exit 1
+        return
     fi
 
     # alias found 
-    cd "$(get_path $command)" # do not forget, in this case, command is the alias 
+    cd "$(get_path $command)" 2> /dev/null # do not forget, in this case, command is the alias 
 }
 
 
