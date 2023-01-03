@@ -80,3 +80,8 @@ function cx__error_not_alias_rename () {
     see_help_i_rename
 }
 
+function cx__create_error_name () {
+    echo -e $red"cx:"$defaultColor "Can't give a command name as shortcut name"
+    see_help_i_create
+}
+
