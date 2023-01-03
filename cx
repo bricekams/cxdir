@@ -15,6 +15,7 @@ args_number=$#
 # var: list of passed arguments
 args=$*
 # var: arguments
+script=$0
 command=$1
 alias=$2
 option=$3
@@ -59,6 +60,8 @@ function cx__main () {
             "update") cx__update_main;;
         # user want to [list] all shortcuts    
             "list") cx__list_main;;
+        # user want to uninstall cxdir
+            "uninstall") uninstall;;
         # user want help about the `cx` command    
             "--help") show_help_cx;;
         # user want to know the software version    
@@ -117,6 +120,15 @@ function cx__change_dir () {
     cx__change
 }
 
+function uninstall () {
+    if [[ -n $alias ]]; then
+    echo -e $red"cx:"$defaultColor "\"$alias\"" "is invalid"
+    return
+    fi 
+    rm -rf "$cx_path"
+    echo "uninstalled"
+}
+
 
 ########## UTILS AND HELPERS ##########
 
@@ -140,6 +152,7 @@ function show_help_cx () {
     echo -e "rename \t \t \t rename a shortcut"
     echo -e "update \t \t \t update the path of a shortcut"
     echo -e "delete \t \t \t delete a saved shortcut"
+    echo -e "uninstall \t \t \t uninstall cxdir"
     echo ""
     echo "Use 'cx <command> --help' to more about each command"
     echo ""
