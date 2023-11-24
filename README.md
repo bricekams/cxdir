@@ -74,7 +74,7 @@ You just have to clone this project as show above and make a pull request
 ### Credits
 
 Made by me, Jotter Kain...<br/>
-Twitter [jotterkn](https://twitter.com/jotterkn)
+Twitter [bricekams](https://twitter.com/kamsbrice)
 
 
 
