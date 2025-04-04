@@ -39,6 +39,7 @@ delete_file_path="$cx_path/cmd/delete.sh"
 rename_file_path="$cx_path/cmd/rename.sh"
 update_file_path="$cx_path/cmd/update.sh"
 change_file_path="$cx_path/cmd/change.sh"
+search_file_path="$cx_path/cmd/search.sh"
 
 
 
@@ -60,6 +61,8 @@ function cx__main () {
             "update") cx__update_main;;
         # user want to [list] all shortcuts    
             "list") cx__list_main;;
+        # user want to [search] by keyword
+            "search") cx__search_main;;
         # user want to uninstall cxdir
             "uninstall") uninstall;;
         # user want help about the `cx` command    
@@ -131,7 +134,12 @@ function uninstall () {
     echo "uninstalled"
 }
 
-
+function cx__search_main () {
+    (
+        source $search_file_path
+        cx__search
+    )
+}
 ########## UTILS AND HELPERS ##########
 
 function cx__hasParams() {
